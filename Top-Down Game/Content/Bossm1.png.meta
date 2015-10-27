@@ -1,0 +1,20 @@
+ImageContent = 
+{
+	SpriteSourceBuilder = 
+	{
+		string Name = "Bossm1",
+		uint64 ResourceId = 561a7f61f03d86ef,
+		uint64 AtlasId = 5274cf95e4a661fd,
+		uint FrameSizeX = 449,
+		uint FrameSizeY = 344,
+		uint FrameCount = 1,
+		float FrameDelay = 0.0833333358,
+		float OriginX = 224,
+		float OriginY = 172,
+		float PixelsPerUnit = 64,
+		bool Smoothing = false,
+		bool Looping = true,
+		Vec4 Slices = [0, 0, 0, 0],
+		SpriteFill Fill = Stretch,
+	},
+},

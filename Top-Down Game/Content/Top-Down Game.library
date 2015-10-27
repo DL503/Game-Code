@@ -1,0 +1,7 @@
+ContentLibrary = 
+{
+	string Name = "Top-Down Game",
+	uint64 LibraryId = 561ba88f0929c115,
+	string SourceControlType = "",
+	bool ReadOnly = false,
+},

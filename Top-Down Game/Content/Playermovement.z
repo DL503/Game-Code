@@ -1,0 +1,46 @@
+class Playermovement : ZilchComponent
+    {
+    [Property]
+    
+    var Speed : Real = 0.5;
+    function Initialize(init : CogInitializer)
+    {
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        //when the W key is down, the player moves in the positive Y directon (up)
+        if(Zero.Keyboard.KeyIsDown(Keys.W))
+        {
+            var temp = this.Owner.Transform.Translation;
+            temp.Y +=this.Speed;
+            this.Owner.Transform.Translation = temp;
+        }
+        //when the S key is down, the player moves in the -Y direction (down)
+        if(Zero.Keyboard.KeyIsDown(Keys.S))
+        {
+            var temp = this.Owner.Transform.Translation;
+            temp.Y -=this.Speed;
+            this.Owner.Transform.Translation = temp;
+        }
+        //when the A key is down, the player moves in the -X direction (left)
+        /*
+        if(Zero.Keyboard.KeyIsDown (Keys.A))
+        {
+            var temp = this.Owner.Transform.Translation;
+            temp.X -=this.Speed;
+            this.Owner.Transform.Translation = temp;
+        }
+        */
+        //when the D key is down, the player moves in the X direction (right)
+        /*
+        if(Zero.Keyboard.KeyIsDown(Keys.D))
+        {
+            var temp = this.Owner.Transform.Translation;
+            temp.X +=this.Speed;
+            this.Owner.Transform.Translation = temp;
+        }
+        */
+    }
+}

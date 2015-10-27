@@ -1,0 +1,36 @@
+class Derp : ZilchComponent
+{
+    [Property]
+    var Speed: Real = 2.0;
+    var Direction: Real3 = Real3(-10,0,0);
+    var Time : Real = 0.0;
+    function Initialize(init : CogInitializer)
+    {
+        // We need to update the projectile's movement every logic update
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+    this.Time += event.Dt;
+    Console.WriteLine(this.Time);
+    if(this.Time > 3)
+    {
+        //shoot bullet
+        this.Time=0;
+    }
+    if(this.Time == 0.0)
+    {
+    var spawnPosition = this.Owner.Transform.Translation;
+    spawnPosition.X +=-7;
+    var archetypeToSpawn = Archetype.Find("Bullets");
+    var createdBall = this.Space.CreateAtPosition(archetypeToSpawn, spawnPosition);
+    createdBall.RigidBody.Velocity = this.Direction;
+    }
+    
+        // Aplly movement
+        //this.Owner.Transform.Translation += this.Direction * event.Dt * this.Speed;
+    }
+}
+
+

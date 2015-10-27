@@ -1,0 +1,20 @@
+ImageContent = 
+{
+	SpriteSourceBuilder = 
+	{
+		string Name = "Goodguym1",
+		uint64 ResourceId = 561ba0c2cde7126e,
+		uint64 AtlasId = 5274cf95e4a661fd,
+		uint FrameSizeX = 371,
+		uint FrameSizeY = 251,
+		uint FrameCount = 1,
+		float FrameDelay = 0.0833333358,
+		float OriginX = 185,
+		float OriginY = 125,
+		float PixelsPerUnit = 64,
+		bool Smoothing = false,
+		bool Looping = true,
+		Vec4 Slices = [0, 0, 0, 0],
+		SpriteFill Fill = Stretch,
+	},
+},
