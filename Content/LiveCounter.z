@@ -1,7 +1,7 @@
-class HealthScript : ZilchComponent
+class LiveCounter : ZilchComponent
 {
-    [Property]
-    var Health : Real = 10;
+[Property]
+var VisibleTrigger: Integer=3;
     function Initialize(init : CogInitializer)
     {
         Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
@@ -9,10 +9,9 @@ class HealthScript : ZilchComponent
 
     function OnLogicUpdate(event : UpdateEvent)
     {
-        Console.WriteLine(this.Health);
-        if(this.Health == 0)
+        if(this.Space.FindObjectByName("Player").HealthScript.Health < this.VisibleTrigger)
         {
-            this.Space.ReloadLevel();
+            this.Owner.Sprite.Visible = false;
         }
     }
 }

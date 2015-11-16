@@ -1,0 +1,32 @@
+class BaddieBulletCollision : ZilchComponent
+{
+    function Initialize(init : CogInitializer)
+    {
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+        Zero.Connect(this.Owner, Events.CollisionStarted, this.OnCollisionStarted);
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+    }
+    function OnCollisionStarted(event : CollisionEvent)
+    {
+        if(event.OtherObject.Name == "Bullets")
+        {
+            this.Owner.HealthScript.Health -=1;
+            Console.WriteLine(this.Owner.HealthScript.Health);
+        if(this.Owner.HealthScript.Health == 0)
+        {
+            this.Owner.Destroy();
+        }
+        }
+        if(event.OtherObject.Name == "Player")
+        {
+            var temp = this.Space.FindObjectByName("Player");
+            var temp2 = temp.HealthScript.Health;
+            temp2 -=2;
+            temp.HealthScript.Health=temp2;
+            this.Owner.Destroy();
+        }
+    }
+}

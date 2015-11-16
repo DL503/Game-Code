@@ -30,3 +30,4 @@ class GameLogic : ZilchComponent
         }
     }
 }
+//this.Space.LoadLevel(Level.Find("level2"));

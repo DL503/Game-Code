@@ -1,0 +1,11 @@
+DataContent = 
+{
+	DataBuilder = 
+	{
+		string Name = "LevelUpgrade",
+		uint64 ResourceId = 5655b430e44c07f9,
+		string LoaderType = "Level",
+		uint Version = 0,
+		bool ShowInEditor = true,
+	},
+},

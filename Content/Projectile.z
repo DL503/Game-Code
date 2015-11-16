@@ -1,0 +1,79 @@
+class Derp : ZilchComponent
+{
+    [Property]
+    var Burst: Real = 0;
+    var BurstLow: Real = 0;
+    var Speed: Real = 2.0;
+    var Direction: Real3 = Real3();
+    var Delayed: Real = 0.0;
+    [Property]
+    var SuicideBaddie: Real = 0;
+    
+    function Initialize(init : CogInitializer)
+    {
+        // We need to update the projectile's movement every logic update
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        this.Delayed += event.Dt;
+        
+        var temp = this.Space.FindObjectByName("Boss").HealthScript.Health;
+        
+        if(this.Delayed >= 0.2 && this.Burst < 3 && temp >= 50)
+        {
+            var spawnPosition = this.Owner.Transform.Translation;
+            spawnPosition.X +=-7;
+            var archetypeToSpawn = Archetype.Find("EnemyBullets");
+            var createdBall = this.Space.CreateAtPosition(archetypeToSpawn, spawnPosition);
+            //createdBall.RigidBody.Velocity = this.Direction * this.Speed;
+            Console.WriteLine(createdBall.RigidBody.Velocity);
+            
+            this.Burst += 1;
+            this.Delayed = 0;
+            
+            var playerLocation = this.Space.FindObjectByName("Player").Transform.Translation;
+            var bossLocation = this.Owner.Transform.Translation;
+            var shootDirection = Real3(playerLocation.X-bossLocation.X, playerLocation.Y-bossLocation.Y, 0);
+            createdBall.RigidBody.Velocity = shootDirection;
+        }
+        
+        if(this.Delayed >=0.1 && this.BurstLow < 5 && temp <= 50)
+        {
+            var spawnPosition = this.Owner.Transform.Translation;
+            spawnPosition.X +=-7;
+            var archetypeToSpawn = Archetype.Find("EnemyBullets");
+            var createdBall = this.Space.CreateAtPosition(archetypeToSpawn, spawnPosition);
+            //createdBall.RigidBody.Velocity = this.Direction * this.Speed;
+            Console.WriteLine(createdBall.RigidBody.Velocity);
+            
+            this.BurstLow += 1;
+            this.Delayed = 0;
+            
+            var playerLocation = this.Space.FindObjectByName("Player").Transform.Translation;
+            var bossLocation = this.Owner.Transform.Translation;
+            var shootDirection = Real3(playerLocation.X-bossLocation.X, playerLocation.Y-bossLocation.Y, 0);
+            createdBall.RigidBody.Velocity = shootDirection;
+        }
+
+        if(this.Burst == 3)
+        {
+            this.Burst = 0;
+            this.Delayed = -3;
+        }
+        
+        if(this.BurstLow == 5)
+        {
+            this.BurstLow = 0;
+            this.Delayed = -3;
+        }
+        
+        this.SuicideBaddie += event.Dt;
+        if(this.SuicideBaddie >=3)
+            {
+                //spawn Baddie
+                this.SuicideBaddie = 0;
+            }
+    }
+}

@@ -1,0 +1,26 @@
+class BaddieSuicide : ZilchComponent
+{
+    var Delay: Real = 0.0;
+    function Initialize(init : CogInitializer)
+    {
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        this.Delay += event.Dt;
+        
+        if(this.Delay >= 2.5)
+        {
+            var spawnPosition = this.Owner.Transform.Translation;
+            spawnPosition.X +=-7;
+            var archetypeToSpawn = Archetype.Find("SuicideBaddies");
+            var createdSuicideBall = this.Space.CreateAtPosition(archetypeToSpawn, spawnPosition);
+            this.Delay = 0;
+            var playerLocation = this.Space.FindObjectByName("Player").Transform.Translation;
+            var bossLocation = this.Owner.Transform.Translation;
+            var shootDirection = Real3(playerLocation.X-bossLocation.X, playerLocation.Y-bossLocation.Y, 0);
+            createdSuicideBall.RigidBody.Velocity = shootDirection;
+        }
+    }
+}

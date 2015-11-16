@@ -1,28 +1,31 @@
 class Shooting : ZilchComponent
 {
     var Direction : Real3 = Real3(20,0,0);
+    var Timer : Real = 0;
     function Initialize(init : CogInitializer)
     {
         Zero.Connect(Zero.Keyboard, Events. KeyDown, this.OnKeyDown);
         
-        //Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
     }
 
     function OnLogicUpdate(event : UpdateEvent)
     {
+        this.Timer += event.Dt;
     }
     //Makes it shoot right
     
     function OnKeyDown(event : KeyboardEvent)
     {
 
-        if(event.Key == Keys.Space)
+        if(event.Key == Keys.Space&&this.Timer>=0.5)
         {
             var spawnPosition = this.Owner.Transform.Translation;
-            spawnPosition.X +=6;
+            spawnPosition.X +=7;
             var archetypeToSpawn = Archetype.Find("Bullets");
             var createdBall = this.Space.CreateAtPosition(archetypeToSpawn, spawnPosition);
             createdBall.RigidBody.Velocity = this.Direction;
+            this.Timer = 0;
         }
     }
 }
