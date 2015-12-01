@@ -1,4 +1,4 @@
-class Derp : ZilchComponent
+class ShootingBaddie : ZilchComponent
 {
     [Property]
     var Burst: Real = 0;
@@ -19,7 +19,7 @@ class Derp : ZilchComponent
     {
         this.Delayed += event.Dt;
         
-        var temp = this.Owner.HealthScript.Health;
+        var temp = this.Space.FindObjectByName("Boss").HealthScript.Health;
         
         if(this.Delayed >= 0.2 && this.Burst < 3 && temp >= 50)
         {

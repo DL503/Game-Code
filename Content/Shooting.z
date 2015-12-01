@@ -1,5 +1,7 @@
 class Shooting : ZilchComponent
 {
+    [Property]
+    var Speed : Real = 0.2;
     var Direction : Real3 = Real3(20,0,0);
     var Timer : Real = 0;
     function Initialize(init : CogInitializer)
@@ -18,7 +20,7 @@ class Shooting : ZilchComponent
     function OnKeyDown(event : KeyboardEvent)
     {
 
-        if(event.Key == Keys.Space&&this.Timer>=0.5)
+        if(event.Key == Keys.Space&&this.Timer>=this.Speed)
         {
             var spawnPosition = this.Owner.Transform.Translation;
             spawnPosition.X +=7;

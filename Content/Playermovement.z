@@ -36,7 +36,7 @@ class Playermovement : ZilchComponent
         //when the D key is down, the player moves in the X direction (right)
         /*
         if(Zero.Keyboard.KeyIsDown(Keys.D))
-        {
+        {wwww
             var temp = this.Owner.Transform.Translation;
             temp.X +=this.Speed;
             this.Owner.Transform.Translation = temp;

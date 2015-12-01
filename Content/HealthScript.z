@@ -15,8 +15,14 @@ class HealthScript : ZilchComponent
             if(this.Owner.Name == "Player")
             {
                 this.Space.ReloadLevel();
-            }
-            else{
+            }else if(this.Owner.Name == "Boss" && this.Space.CurrentLevel.Name == "Level1")
+            {
+                this.Space.LoadLevel(Level.Find("LevelUpgrade"));
+            }else if (this.Owner.Name == "Boss" && this.Space.CurrentLevel.Name == "Level2_fast" || this.Owner.Name == "Boss" && this.Space.CurrentLevel.Name == "Level2_move")
+            {
+                this.Space.LoadLevel(Level.Find("Level3"));
+            }else
+            {
                 this.Owner.Destroy();
             }
         }

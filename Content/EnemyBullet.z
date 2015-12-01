@@ -18,8 +18,12 @@ class EnemyBullet : ZilchComponent
             temp2 -=1;
             temp.HealthScript.Health=temp2;
         }
+        if(event.OtherObject.Name != "Blockingbaddie" && event.OtherObject.Name != "EnemyBullets" && event.OtherObject.Name != "Boss")
+        {
+            this.Owner.Destroy();
+        }
+
 
         //this.Space.FindObjectByName("player");
-        this.Owner.Destroy();
     }
 }

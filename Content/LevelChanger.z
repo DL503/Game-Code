@@ -1,0 +1,21 @@
+class LevelChanger : ZilchComponent
+{
+    function Initialize(init : CogInitializer)
+    {
+        //Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+        
+        Zero.Connect(Zero.Keyboard, Events. KeyDown, this.OnKeyDown);
+    }
+
+    function OnKeyDown(event : KeyboardEvent)
+    {
+        if(event.Key == Keys.One)
+        {
+            this.Space.LoadLevel(Level.Find("Level2_fast"));
+        }
+        if(event.Key == Keys.Two)
+        {
+            this.Space.LoadLevel(Level.Find("Level2_move"));
+        }
+    }
+}

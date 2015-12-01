@@ -1,0 +1,20 @@
+ImageContent = 
+{
+	SpriteSourceBuilder = 
+	{
+		string Name = "Pleasedont",
+		uint64 ResourceId = 565c67ca4933a694,
+		uint64 AtlasId = 5274cf95e4a661fd,
+		uint FrameSizeX = 84,
+		uint FrameSizeY = 40,
+		uint FrameCount = 6,
+		float FrameDelay = 0.0833333358,
+		float OriginX = 42,
+		float OriginY = 20,
+		float PixelsPerUnit = 64,
+		bool Smoothing = false,
+		bool Looping = true,
+		Vec4 Slices = [0, 0, 0, 0],
+		SpriteFill Fill = Stretch,
+	},
+},
