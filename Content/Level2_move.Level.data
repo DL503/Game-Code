@@ -424,7 +424,7 @@ Level =
 		},
 		HealthScript = 
 		{
-			float Health = 2,
+			float Health = 100,
 		},
 		BaddieControler = 
 		{

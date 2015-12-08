@@ -103,7 +103,7 @@ Level =
 		},
 		Transform = 
 		{
-			Vec3 Translation = [17.8139114, -3.1667676, 50],
+			Vec3 Translation = [16.4805412, -3.33408785, 50],
 			Vec3 Scale = [1, 1, 1],
 			Quat Rotation = [-0, -1.09278471e-008, 0, 1],
 		},
@@ -115,7 +115,7 @@ Level =
 			float FieldOfView = 45,
 			float NearPlane = 0.5,
 			float FarPlane = 500,
-			float Size = 100,
+			float Size = 60.6530991,
 		},
 		EditorCameraController = 
 		{
@@ -123,7 +123,7 @@ Level =
 			float LookDistance = 50,
 			float VerticalAngle = 0,
 			float HorizontalAngle = 0,
-			Vec3 LookTarget = [17.8139114, -3.1667676, 0],
+			Vec3 LookTarget = [16.4805412, -3.33408785, 0],
 			float MoveSensitivity = 1,
 		},
 		EditorRenderer = 
@@ -511,11 +511,11 @@ Level =
 		},
 		Shooting = 
 		{
-			float Speed = 0.300000012,
+			float Speed = 0.400000006,
 		},
 		HealthScript = 
 		{
-			float Health = 10,
+			float Health = 3,
 		},
 		MultiConvexMeshCollider = 
 		{
@@ -811,7 +811,7 @@ Level =
 		},
 		Transform = 
 		{
-			Vec3 Translation = [49.2513313, -10.0258923, 0],
+			Vec3 Translation = [5.74168682, 3.24813747, 0],
 			Vec3 Scale = [6.59569502, 9.12250137, 6.59569502],
 			Quat Rotation = [0, 0, 0, 1],
 		},
@@ -835,7 +835,7 @@ Level =
 		},
 		HealthScript = 
 		{
-			float Health = 10,
+			float Health = 15,
 		},
 		RigidBody = 
 		{
@@ -861,6 +861,11 @@ Level =
 		},
 		BaddieBulletCollision = 
 		{
+		},
+		BaddieControler = 
+		{
+			float PaceSpeed = 30,
+			float MaxMoveDistance = 15,
 		},
 	},
 	Cog = 
